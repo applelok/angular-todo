@@ -1,0 +1,142 @@
+<!doctype html>
+<html ng-app="todoApp">
+<head>
+	<title>My Angular App</title>
+
+	<!--build:css css/styles.min.css-->
+	<link rel="stylesheet" href="css/styles.css">
+	<!--endbuild-->
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
+	<script src="http://underscorejs.org/underscore-min.js"></script>
+	<!--build:js js/main.min.js -->
+	<script src="js/lib/jquery-1.12.2.min.js"></script>
+	<script src="js/main.js"></script>
+	<!-- endbuild -->
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+	<nav>
+		<div id="brand">
+			<span>ToDoApp</span>
+			<span class="small-highlight">with AngularJS</span>
+		</div>
+	</nav>
+	<div id="taskbar">
+		<h5>YOUR TASKS</h5>
+		<div id="task-bubble-bar">
+			<div class="task-bubble">
+				<span>FIND A JOB</span>
+			</div>
+			<div class="task-bubble task2">
+				<span>DONE 2.47 BUILD TASKS</span>
+			</div>
+			<div class="task-bubble task3">
+				<span>MAKE A PROFOLIO</span>
+			</div>
+		</div>
+	</div>
+	<div id="tasks-window">
+		<div id="title-bar">
+			<div id="container-title">
+				<h4>Tasks are waiting for KILL...</h4>
+			</div>
+			<div id="task-add-btn">
+				<button class="btn">
+					<span>Add a task</span>
+				</button>
+			</div>
+		</div>
+		<div id="tasks-container">
+			<div class="task-box">
+				<div class="task-title">
+					<h5>FIND A JOB</h5>
+				</div>
+				<div class="task-due-date">
+					<span class="glyphicon glyphicon-tag"></span>
+					<span>Due-date: 01/05/2016</span>
+				</div>
+				<div class="task-desc">
+					<input placeholder="Description..."></input>
+				</div>
+				<div class="task-done">
+					<button class="btn">
+					<span>Done</span>
+					</button>
+				</div>
+			</div>
+			<div class="task-box">
+				<div class="task-title task2">
+					<h5>DONE 2.47 BUILD TASKS</h5>
+				</div>
+				<div class="task-due-date">
+					<span class="glyphicon glyphicon-tag"></span>
+					<span>Due-date: 27/04/2016</span>
+				</div>
+				<div class="task-desc">
+					<input placeholder="Description..."></input>
+				</div>
+				<div class="task-done">
+					<button class="btn">
+					<span>Done</span>
+					</button>
+				</div>
+			</div>
+			<div class="task-box">
+				<div class="task-title task3">
+					<h5>MAKE A PROFOLIO</h5>
+				</div>
+				<div class="task-due-date">
+					<span class="glyphicon glyphicon-tag"></span>
+					<span>Due-date: 22/04/2016</span>
+				</div>
+				<div class="task-desc">
+					<input placeholder="Description..."></input>
+				</div>
+				<div class="task-done">
+					<button class="btn">
+					<span>Done</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div id="todoApp" style="display:none;">
+			<div id="outer">
+				<div ng-controller="TodoCtrl">
+					<big>Total tasks: {{totalTasks()}}</big><br />
+					<big>Completed: {{totalCompleted()}}</big><br />
+					<big>Remaining: {{remaining()}}</big>
+					<ul>
+						<li ng-repeat="todo in todos">
+							<input type="checkbox" ng-model="todo.done">
+							<span ng-hide="todo.done">{{todo.text}}</span>
+							<del ng-show="todo.done">{{todo.text}}</del>
+							<button ng-click="removeItem(todo)">X</button>
+						</li>
+						<li>New item: {{newItem}}</li>
+					</ul>
+					<form>
+						<input type="text" ng-model="newItem">
+						<input type="submit" ng-click="addTodo(newItem)" value="ADD">
+					</form>
+					<button ng-click="clearCompleted()">CLEAR COMPLETED</button>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+html, body {
+  font-family: 'Open Sans' !important;
+  background-color: #FEF9EE !important; }
+
+nav {
+  height: 50px;
+  background-color: #2F2F2F;
+  color: #C0C0C0;
+  padding: 10px 30px 10px 30px; }
+  nav span {
+    font-size: 20px; }
+  nav #brand .small-highlight {
+    font-size: 10px;
+    font-style: italic;
+    font-weight: bold; }
+
+#taskbar {
+  height: 120px;
+  background-color: #F5EFE1;
+  padding: 30px; }
+  #taskbar h5 {
+    margin-top: 0px; }
+  #taskbar #task-bubble-bar {
+    float: left; }
+    #taskbar #task-bubble-bar .task-bubble {
+      display: inline-block;
+      margin-right: 10px;
+      background-color: #2F2F2F;
+      height: 40px;
+      max-width: 200px;
+      padding: 10px;
+      min-width: 10px;
+      color: white;
+      font-weight: bold; }
+    #taskbar #task-bubble-bar .task2 {
+      background-color: #5CB85C; }
+    #taskbar #task-bubble-bar .task3 {
+      background-color: #D25024; }
+
+#tasks-window {
+  background-color: #FEF9EE;
+  padding: 30px; }
+  #tasks-window #title-bar {
+    width: 100%;
+    display: inline-block; }
+    #tasks-window #title-bar #container-title {
+      width: 80%;
+      float: left; }
+      #tasks-window #title-bar #container-title h4 {
+        font-weight: bold !important; }
+    #tasks-window #title-bar #task-add-btn {
+      width: 20%;
+      float: left; }
+      #tasks-window #title-bar #task-add-btn button {
+        border-radius: 0px !important;
+        border: 2px solid #0D487B;
+        background-color: #2E6DA4;
+        height: 33px;
+        width: 100px;
+        color: white;
+        font-weight: bold; }
+  #tasks-window #tasks-container {
+    width: 100%; }
+    #tasks-window #tasks-container .task-box {
+      padding: 5px;
+      width: 320px;
+      display: inline-block;
+      height: 185px;
+      background-color: #F5EFE1;
+      margin-right: 10px; }
+      #tasks-window #tasks-container .task-box .task-title {
+        padding: 7px;
+        background-color: #D9AE15;
+        height: 30px;
+        color: white; }
+        #tasks-window #tasks-container .task-box .task-title h5 {
+          margin: 0px;
+          font-weight: bold; }
+      #tasks-window #tasks-container .task-box .task2 {
+        background-color: #5CB85C; }
+      #tasks-window #tasks-container .task-box .task3 {
+        background-color: #D25024; }
+      #tasks-window #tasks-container .task-box .task-due-date {
+        height: 60px;
+        background-color: white;
+        margin-left: 1px;
+        margin-right: 1px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px; }
+        #tasks-window #tasks-container .task-box .task-due-date .glyphicon {
+          color: #D6CCB0; }
+      #tasks-window #tasks-container .task-box .task-desc {
+        height: 30px;
+        margin: 10px 10px 5px 10px; }
+        #tasks-window #tasks-container .task-box .task-desc input {
+          width: 100%; }
+      #tasks-window #tasks-container .task-box .task-done .btn {
+        border-radius: 0px !important;
+        border: 2px solid #0D487B;
+        background-color: #2E6DA4;
+        margin: 0px 10px 0px 10px;
+        height: 33px;
+        width: 100px;
+        color: white;
+        font-weight: bold; }
+
+#todoApp {
+  width: 100%;
+  margin: 0 auto; }
+  #todoApp #outer {
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px; }
