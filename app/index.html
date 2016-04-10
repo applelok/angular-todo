@@ -32,85 +32,106 @@
 			<span class="small-highlight">with AngularJS</span>
 		</div>
 	</nav>
-	<div id="taskbar">
+	<div id="taskbar" ng-controller="taskBarController">
 		<h5>YOUR TASKS</h5>
 		<div id="task-bubble-bar">
-			<div class="task-bubble">
-				<span>FIND A JOB</span>
+			<div class="task-bubble" ng-repeat="task in tasks" style="background-color: {{task.color}}">
+				<span>{{task.text}}</span>
 			</div>
-			<div class="task-bubble task2">
+			<!-- <div class="task-bubble task2">
 				<span>DONE 2.47 BUILD TASKS</span>
 			</div>
 			<div class="task-bubble task3">
 				<span>MAKE A PROFOLIO</span>
-			</div>
+			</div> -->
 		</div>
 	</div>
-	<div id="tasks-window">
+	<div id="tasks-window" ng-controller="taskWinController">
 		<div id="title-bar">
 			<div id="container-title">
 				<h4>Tasks are waiting for KILL...</h4>
 			</div>
 			<div id="task-add-btn">
-				<button class="btn">
+				<!-- <button class="btn" ng-click="addTask('item', '02/07/2016', 'descccccc')">
+					<span>Add a task</span>
+				</button>-->
+				<button id="addTaskBtn" class="btn" data-toggle="modal" data-target="#addTaskPopUp">
 					<span>Add a task</span>
 				</button>
+				
+				<!-- Modal -->
+				<div class="modal fade" id="addTaskPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div id="header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Add Task</h4>
+							</div>
+							<div class="modal-body" id="content-body">
+								<form class="form-horizontal" id="addTaskForm">
+									<div class="form-group">
+										<label for="inputTaskName" class="col-sm-3 control-label">Task Name</label>
+										<div class="col-sm-9">
+											<input type="text" id="formTaskName" class="form-control" placeholder="Task name">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputTaskDesc" class="col-sm-3 control-label">Task Due-date</label>
+										<div class="col-sm-9">
+											<input type="date" id="formTaskDate" class="form-control" placeholder="Task Due-date">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputTaskDesc" class="col-sm-3 control-label">Task Description</label>
+										<div class="col-sm-9">
+											<input type="text" id="formTaskDesc" class="form-control" placeholder="Task Description">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputTaskDesc" class="col-sm-3 control-label">Color label</label>
+										<div class="col-sm-9">
+											<div class="colorpicker" style="background-color: {{color}}" ng-repeat="color in colorSet" ng-click="selectColor($event, color)">
+												<span class="glyphicon glyphicon-ok"></span>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer" id="footer">
+								<button class="">Clear</button>
+								<button ng-click="addTaskViaPopup()">Submit</button>
+								
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div id="tasks-container">
-			<div class="task-box">
-				<div class="task-title">
-					<h5>FIND A JOB</h5>
+		<big>Total tasks: {{totalTasks()}}</big><br />
+		<big>Completed: {{totalCompleted()}}</big><br />
+		<big>Remaining: {{remaining()}}</big>
+		<ul>
+			<div class="task-box" ng-repeat="task in todos">
+				<div class="task-title" style="background-color:{{task.color}}">
+					<h5>{{task.text}}</h5>
 				</div>
 				<div class="task-due-date">
+					<p>{{task.desc}}</p>
 					<span class="glyphicon glyphicon-tag"></span>
-					<span>Due-date: 01/05/2016</span>
+					<span>{{task.duedate}}</span>
 				</div>
-				<div class="task-desc">
-					<input placeholder="Description..."></input>
-				</div>
-				<div class="task-done">
-					<button class="btn">
-					<span>Done</span>
-					</button>
+				
+				<div class="task-done" style="text-align: right;">
+					<div class="ib task-done-text">
+						<span>Done</span>
+					</div>
+					<div class="ib">
+						<input type="checkbox" id="cbtest" ng-click="taskCompleted($event,$index)"/>
+					</div>
 				</div>
 			</div>
-			<div class="task-box">
-				<div class="task-title task2">
-					<h5>DONE 2.47 BUILD TASKS</h5>
-				</div>
-				<div class="task-due-date">
-					<span class="glyphicon glyphicon-tag"></span>
-					<span>Due-date: 27/04/2016</span>
-				</div>
-				<div class="task-desc">
-					<input placeholder="Description..."></input>
-				</div>
-				<div class="task-done">
-					<button class="btn">
-					<span>Done</span>
-					</button>
-				</div>
-			</div>
-			<div class="task-box">
-				<div class="task-title task3">
-					<h5>MAKE A PROFOLIO</h5>
-				</div>
-				<div class="task-due-date">
-					<span class="glyphicon glyphicon-tag"></span>
-					<span>Due-date: 22/04/2016</span>
-				</div>
-				<div class="task-desc">
-					<input placeholder="Description..."></input>
-				</div>
-				<div class="task-done">
-					<button class="btn">
-					<span>Done</span>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div id="todoApp" style="display:none;">
+		<!-- <div id="todoApp" style="display:none;">
 			<div id="outer">
 				<div ng-controller="TodoCtrl">
 					<big>Total tasks: {{totalTasks()}}</big><br />
@@ -134,7 +155,7 @@
 				</div>
 			</div>
 
-		</div>
+		</div> -->
 
 	</div>
 
