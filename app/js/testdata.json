@@ -1,0 +1,67 @@
+{
+  "root":[
+    { "id": 0,
+      "text": "Raindrop keeps falling on my head",
+      "duedate": "02/05/2016",
+      "desc": "Raindrops keep falling on my head, but that doesnt mean my eye will soon be turn in red.",
+      "color": "#D25024",
+      "done": false
+    },
+    { "id": 1,
+      "text": "Finish AngularTodo as a profolio",
+      "duedate": "02/01/2016",
+      "desc": "Do a profolio for job reference",
+      "color": "#D25024",
+      "done": false
+    },
+    { "id": 2,
+      "text": "Find a good job",
+      "duedate": "01/06/2016",
+      "desc": "I am all of love, I am so lost without you",
+      "color": "#D9AE15",
+      "done": true
+    },
+    { "id": 3,
+      "text": "Eat buffet",
+      "duedate": "15/04/2016",
+      "desc": "Eat eat eat eat is my hobby XDDDD",
+      "color": "#5CB85C",
+      "done": false
+    },
+    { "id": 4,
+      "text": "Right here waiting",
+      "duedate": "11/09/2016",
+      "desc": "I am right here waiting for you,  No matter it takes, or how my breaks I will be right here waiting for you",
+      "color": "#D9AE15",
+      "done": false
+    },
+     { "id": 5,
+      "text": "Ebony and Ivory",
+      "duedate": "02/05/2016",
+      "desc": "Leave together in perfect, Harmony side by sidee on my piano",
+      "color": "#D25024",
+      "done": false
+    },
+     { "id": 6,
+      "text": "Miss you finally",
+      "duedate": "13/08/2016",
+      "desc": "But I miss you finally, right from the start, my love make me back",
+      "color": "#D25024",
+      "done": true
+    },
+     { "id": 7,
+      "text": "Black magic woman",
+      "duedate": "22/09/2016",
+      "desc": "I ve got a black magic woman, she makes me so blind i cant see, i ve got a black magic woman, she s trying make a devil out me",
+      "color": "#5CB85C",
+      "done": false
+    },
+     { "id": 8,
+      "text": "Sometimes when we touch",
+      "duedate": "03/12/2016",
+      "desc": "The honesty too much, and I have to close my eyes and hide, I wanna hold you till i die, till we both break down and cry",
+      "color": "#D9AE15",
+      "done": false
+    }
+ ] 
+}

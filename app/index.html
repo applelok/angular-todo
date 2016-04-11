@@ -18,6 +18,7 @@
 	<script src="http://underscorejs.org/underscore-min.js"></script>
 	<!--build:js js/main.min.js -->
 	<script src="js/lib/jquery-1.12.2.min.js"></script>
+	<script src="http://requirejs.org/docs/release/2.2.0/minified/require.js"></script>
 	<script src="js/main.js"></script>
 	<!-- endbuild -->
 	<!-- Latest compiled and minified JavaScript -->
@@ -33,11 +34,14 @@
 		</div>
 	</nav>
 	<div id="taskbar" ng-controller="taskBarController">
-		<h5>YOUR TASKS</h5>
+		<h4>Your tasks statistics</h4>
 		<div id="task-bubble-bar">
-			<div class="task-bubble" ng-repeat="task in tasks" style="background-color: {{task.color}}">
+			<big>Total tasks: {{totalTasks()}}</big>
+			<big>Completed: {{totalCompleted()}}</big>
+			<big>Remaining: {{remaining()}}</big>
+			<!-- <div class="task-bubble" ng-repeat="task in tasks" style="background-color: {{task.color}}">
 				<span>{{task.text}}</span>
-			</div>
+			</div> -->
 			<!-- <div class="task-bubble task2">
 				<span>DONE 2.47 BUILD TASKS</span>
 			</div>
@@ -49,12 +53,12 @@
 	<div id="tasks-window" ng-controller="taskWinController">
 		<div id="title-bar">
 			<div id="container-title">
-				<h4>Tasks are waiting for KILL...</h4>
+				<h4>YOUR TASKS LIST ^_^</h4>
 			</div>
 			<div id="task-add-btn">
-				<!-- <button class="btn" ng-click="addTask('item', '02/07/2016', 'descccccc')">
-					<span>Add a task</span>
-				</button>-->
+				 <button id="addTaskBtn"class="btn switchFormat" ng-click="switchGridList($event)">
+					<span id="showFormat">Show as List</span>
+				</button>
 				<button id="addTaskBtn" class="btn" data-toggle="modal" data-target="#addTaskPopUp">
 					<span>Add a task</span>
 				</button>
@@ -108,11 +112,8 @@
 			</div>
 		</div>
 		<div id="tasks-container">
-		<big>Total tasks: {{totalTasks()}}</big><br />
-		<big>Completed: {{totalCompleted()}}</big><br />
-		<big>Remaining: {{remaining()}}</big>
-		<ul>
-			<div class="task-box" ng-repeat="task in todos">
+			<div id="task-box-container">
+			<div class="task-box" ng-class="{ sample : task.done == true}" ng-repeat="task in todos">
 				<div class="task-title" style="background-color:{{task.color}}">
 					<h5>{{task.text}}</h5>
 				</div>
@@ -127,9 +128,32 @@
 						<span>Done</span>
 					</div>
 					<div class="ib">
-						<input type="checkbox" id="cbtest" ng-click="taskCompleted($event,$index)"/>
+						<input type="checkbox" id="cbtest" ng-checked="task.done==true" ng-click="taskCompleted($event,$index, true)"/>
 					</div>
 				</div>
+			</div>
+			</div>
+			<div class="clearfix"></div>
+			<div id="task-list-container" style="display: none;">
+			<div class="task-list" ng-class="{ sample : task.done == true}" ng-repeat="task in todos">
+				<div class="list-title" style="background-color:{{task.color}}">
+					<h5>{{task.text}}</h5>
+				</div>
+				<div class="list-due-date">
+					<p>{{task.desc}}</p>
+					<span class="glyphicon glyphicon-tag"></span>
+					<span>{{task.duedate}}</span>
+				</div>
+				
+				<div class="list-done" style="text-align: right;">
+					<div class="ib task-done-text">
+						<span>Done</span>
+					</div>
+					<div class="ib">
+						<input type="checkbox" ng-checked="task.done==true" id="cbtest" ng-click="taskCompleted($event,$index, false)"/>
+					</div>
+				</div>
+			</div>
 			</div>
 		<!-- <div id="todoApp" style="display:none;">
 			<div id="outer">
