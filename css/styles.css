@@ -1,0 +1,239 @@
+html, body {
+  font-family: 'Open Sans' !important;
+  background-color: #FEF9EE !important; }
+
+nav {
+  height: 50px;
+  background-color: #2F2F2F;
+  color: #C0C0C0;
+  padding: 10px 30px 10px 30px; }
+  nav span {
+    font-size: 20px; }
+  nav #brand .small-highlight {
+    font-size: 10px;
+    font-style: italic;
+    font-weight: bold; }
+
+.ib {
+  display: inline-block; }
+
+.FL {
+  float: left; }
+
+#taskbar {
+  height: 120px;
+  background-color: #F5EFE1;
+  padding: 30px; }
+  #taskbar h4 {
+    margin-top: 0px;
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: uppercase; }
+  #taskbar #task-bubble-bar {
+    float: left; }
+    #taskbar #task-bubble-bar big {
+      margin-right: 10px; }
+    #taskbar #task-bubble-bar .task-bubble {
+      display: inline-block;
+      margin-right: 10px;
+      background-color: #2F2F2F;
+      height: 40px;
+      padding: 10px;
+      min-width: 10px;
+      color: white;
+      font-weight: bold; }
+
+#addTaskPopUp .modal-content {
+  border-radius: 0px; }
+
+#addTaskPopUp #header {
+  height: 56px;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #2F2F2F;
+  color: white;
+  font-weight: bold; }
+  #addTaskPopUp #header .close {
+    color: white;
+    opacity: 1; }
+
+#addTaskPopUp #content-body {
+  padding-bottom: 0px; }
+
+#addTaskPopUp input {
+  border-radius: 0px; }
+  #addTaskPopUp input:focus {
+    border-color: #888;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+
+#addTaskPopUp #footer {
+  padding-top: 0px;
+  border-radius: 0px;
+  text-align: right;
+  border: 0px; }
+  #addTaskPopUp #footer button {
+    background: #2E6DA4;
+    border: none;
+    min-width: 10%;
+    font-weight: bold;
+    padding: 5px 10px 5px 10px;
+    color: white; }
+
+#tasks-window {
+  background-color: #FEF9EE;
+  padding: 30px; }
+  #tasks-window #title-bar {
+    width: 100%;
+    display: inline-block; }
+    #tasks-window #title-bar #container-title {
+      width: 80%;
+      float: left; }
+      #tasks-window #title-bar #container-title h4 {
+        font-weight: bold !important; }
+    #tasks-window #title-bar #task-add-btn {
+      width: 20%;
+      float: left; }
+      #tasks-window #title-bar #task-add-btn #addTaskBtn {
+        border-radius: 0px !important;
+        background-color: #2E6DA4;
+        height: 33px;
+        min-width: 100px;
+        color: white;
+        font-weight: bold;
+        text-align: center; }
+      #tasks-window #title-bar #task-add-btn .switchFormat {
+        background-color: #F0AD4E !important; }
+  #tasks-window #addTaskForm .colorpicker {
+    height: 20px;
+    width: 20px;
+    margin-top: 6px;
+    display: inline-block;
+    margin-right: 5px;
+    cursor: pointer; }
+    #tasks-window #addTaskForm .colorpicker .glyphicon {
+      position: absolute;
+      margin-top: 8px;
+      margin-left: 4px;
+      font-size: 1px;
+      color: #333;
+      display: none; }
+  #tasks-window #tasks-container {
+    width: 100%; }
+    #tasks-window #tasks-container .sample:after {
+      content: "DONE";
+      position: relative;
+      top: -100px;
+      left: -10px;
+      float: right;
+      z-index: 1;
+      font-family: Arial,sans-serif;
+      -webkit-transform: rotate(-18deg);
+      -moz-transform: rotate(-18deg);
+      -ms-transform: rotate(-18deg);
+      -o-transform: rotate(-18deg);
+      /* transform: rotate(-45deg); */
+      font-size: 30px;
+      color: #5cb85c;
+      background: #fff;
+      border: solid 4px #5cb85c;
+      padding: 5px;
+      border-radius: 5px;
+      zoom: 1;
+      filter: alpha(opacity=20);
+      opacity: 0.5;
+      -webkit-text-shadow: 0 0 2px #c00;
+      text-shadow: 0 0 2px #3c763d;
+      box-shadow: 0 0 2px #3c763d; }
+    #tasks-window #tasks-container .task-box {
+      padding: 5px;
+      width: 320px;
+      display: inline-block;
+      height: 185px;
+      background-color: #F5EFE1;
+      margin-right: 10px;
+      margin-bottom: 10px; }
+      #tasks-window #tasks-container .task-box .task-title {
+        padding: 7px;
+        background-color: #D9AE15;
+        height: 30px;
+        color: white; }
+        #tasks-window #tasks-container .task-box .task-title h5 {
+          margin: 0px;
+          font-weight: bold; }
+      #tasks-window #tasks-container .task-box .task2 {
+        background-color: #5CB85C; }
+      #tasks-window #tasks-container .task-box .task3 {
+        background-color: #D25024; }
+      #tasks-window #tasks-container .task-box .task-due-date {
+        height: 120px;
+        background-color: white;
+        margin-left: 1px;
+        margin-right: 1px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px; }
+        #tasks-window #tasks-container .task-box .task-due-date .glyphicon {
+          color: #D6CCB0; }
+      #tasks-window #tasks-container .task-box p {
+        font-size: 14px;
+        margin-bottom: 3px;
+        word-wrap: break-word; }
+      #tasks-window #tasks-container .task-box .task-desc {
+        height: 30px;
+        margin: 10px 10px 5px 10px; }
+        #tasks-window #tasks-container .task-box .task-desc input {
+          width: 100%; }
+      #tasks-window #tasks-container .task-box .task-done {
+        text-align: right; }
+        #tasks-window #tasks-container .task-box .task-done .task-done-text {
+          height: 30px;
+          position: relative;
+          top: -5px; }
+          #tasks-window #tasks-container .task-box .task-done .task-done-text span {
+            font-weight: bold; }
+        #tasks-window #tasks-container .task-box .task-done input[type=checkbox] {
+          height: 20px;
+          width: 20px; }
+
+#task-list-container .sample:after {
+  top: -80px !important; }
+
+#task-list-container .task-list {
+  min-height: 70px;
+  padding: 5px;
+  background-color: #F5EFE1;
+  margin-bottom: 5px;
+  width: 80%; }
+  #task-list-container .task-list .list-title {
+    min-height: 20px;
+    padding: 5px; }
+    #task-list-container .task-list .list-title h5 {
+      color: white;
+      font-weight: bold;
+      margin: 0px; }
+  #task-list-container .task-list .list-due-date {
+    min-height: 20px;
+    background-color: white;
+    padding: 5px; }
+    #task-list-container .task-list .list-due-date .glyphicon {
+      color: #D6CCB0; }
+  #task-list-container .task-list .list-done {
+    text-align: right;
+    height: 25px; }
+    #task-list-container .task-list .list-done .task-done-text {
+      position: relative;
+      top: -5px; }
+      #task-list-container .task-list .list-done .task-done-text span {
+        font-weight: bold; }
+    #task-list-container .task-list .list-done input[type=checkbox] {
+      height: 20px;
+      width: 20px; }
+
+#todoApp {
+  width: 100%;
+  margin: 0 auto; }
+  #todoApp #outer {
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px; }
