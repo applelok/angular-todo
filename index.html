@@ -126,10 +126,19 @@
 		</div>
 		<div id="tasks-container" style=" float: left;">
 			<div id="task-box-container">
+				<div id="no-tasks" ng-show="todos.length==0">
+				<div class="ib FL" id="thumb">
+				<img src="images/like.png"/>
+				</div>
+				<div class="ib FL" id="congrat-text">
+				<h1>Congratrulation! You done all the tasks!</h1>
+				<h1>Let's take a break!</h1>
+				</div>
+				</div>
 				<div class="task-box" data-colorlabel="{{task.color}}" data-done="{{task.done}}" ng-class="{ sample : task.done == true}" ng-repeat="task in todos">
 					<div class="task-title" style="background-color:{{task.color}}">
 						<h5 class="FL">{{task.text}}</h5>
-						<span class="removeTask" ng-click="removeAlert($index)">x</span>
+						<span class="removeTask" ng-click="removeAlert($index, false)">x</span>
 					</div>
 					<div class="task-due-date">
 						<p>{{task.desc}}</p>
@@ -152,7 +161,7 @@
 				<div class="task-list" ng-class="{ sample : task.done == true}" ng-repeat="task in todos">
 					<div class="list-title" style="background-color:{{task.color}}">
 						<h5>{{task.text}}</h5>
-
+						<span class="removeTask" ng-click="removeAlert($index, true)">x</span>
 					</div>
 					<div class="list-due-date">
 						<p>{{task.desc}}</p>

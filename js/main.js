@@ -48,7 +48,7 @@ app.controller('taskBarController', function ($scope, $http, todoJson) {
   });
 
   $scope.toggleStat = function () {
-    $('#taskbar').slideToggle(600, function () {
+    $('#taskbar').slideToggle('fast', function () {
     //Animation complete.
       if ($('#taskbar').is(':visible')) {
         $('#toggleSwitch').text('Hide');
@@ -61,7 +61,7 @@ app.controller('taskBarController', function ($scope, $http, todoJson) {
   };
 });
 
-app.controller('taskWinController', function ($scope, todoJson) {
+app.controller('taskWinController', function ($scope, todoJson, $timeout) {
   var todoList = [];
   var id = todoList.length;
   todoJson.then(function (todoTemp) {
@@ -132,10 +132,26 @@ app.controller('taskWinController', function ($scope, todoJson) {
     }
   };
 
-  $scope.removeAlert = function (id){
+  $scope.removeAlert = function (idx, isList){
+    var target;
+    if(isList){
+      target = $('.task-list')[idx]; 
+    }else{
+      target = $('.task-box')[idx];
+    }
 
+    $(target).addClass('toRemove');
+    $timeout(function () {
+      $scope.todos.splice(idx, 1);
+      if($scope.todos.length == 0){
+        noTasks();
+      }
+    }, 300);
   }
 
+  function noTasks(){
+    
+  }
   
 });
 

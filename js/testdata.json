@@ -1,7 +1,7 @@
 {
   "root":[
     { "id": 0,
-      "text": "Learn React JS - a simple component",
+      "text": "Learn React JS",
       "duedate": "02/05/2016",
       "desc": "React components implement a render() method that takes input data and returns what to display.",
       "color": "#D25024",
@@ -24,14 +24,14 @@
     { "id": 3,
       "text": "Take a look on Framer",
       "duedate": "15/04/2016",
-      "desc": "Framer is a design tool that uses code to make anything possible. Pioneer new patterns and groundbreaking designs. Find the best solution, not just the expected one.",
+      "desc": "Framer is a design tool that uses code to make anything possible. Pioneer new patterns and groundbreaking designs.",
       "color": "#5CB85C",
       "done": false
     },
     { "id": 4,
       "text": "Angular JS 2.0",
       "duedate": "11/09/2016",
-      "desc": "Angular computes updates based on changes to data, not DOM, for fast updates that scale to the largest data sets with minimal memory overhead.",
+      "desc": "Angular computes updates based on changes to data, for fast updates that scale to the largest data sets with minimal memory.",
       "color": "#D9AE15",
       "done": false
     },
@@ -45,7 +45,7 @@
      { "id": 6,
       "text": "SASS",
       "duedate": "13/08/2016",
-      "desc": "Bootstrap ships with vanilla CSS, but its source code utilizes Sass, a popular CSS preprocessor. Quickly get started with precompiled CSS or build on the source.",
+      "desc": "Bootstrap ships with vanilla CSS, but its source code utilizes Sass, a popular CSS preprocessor.",
       "color": "#D25024",
       "done": true
     },
