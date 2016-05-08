@@ -28,36 +28,55 @@ nav{
 .FL{
 	float: left;
 }
-#taskbar{
-	height: 120px;
-	background-color: #F5EFE1;
-	padding: 30px;
-	h4{
-		margin-top: 0px;
-		font-weight: bold;
-		text-decoration: underline;
-		text-transform: uppercase;
+#taskStatBar{
+
+	#toggleStat{
+	    // position: absolute;
+	    background-color: #FEF9EE;
+	    height: 30px;
+	    min-width: 70px;
+	    text-align: center;
+	    padding: 5px 10px 5px 10px;
+	    div{
+	    	width: 130px;
+		    background-color: #F5EFE1;
+		    margin: 0 auto;
+		    padding: 5px 10px 5px 10px;
+		    margin-top: -5px;
+		    cursor: pointer;
+	    }
 	}
-	#task-bubble-bar{
-		float: left; 
-		big{
-			margin-right: 10px;
-		}	
-		.task-bubble{
-			display: inline-block;
-			margin-right: 10px;
-			background-color: #2F2F2F;
-			height: 40px;
-		    // max-width: 200px;
-		    padding: 10px;
-		    min-width: 10px;
-		    color: white;
-		    font-weight: bold;
+	#taskbar{
+		height: 120px;
+		background-color: #F5EFE1;
+		padding: 30px;
+	    position: relative;
+		h4{
+			margin-top: 0px;
+			font-weight: bold;
+			text-decoration: underline;
+			text-transform: uppercase;
 		}
+
+		#task-bubble-bar{
+			float: left; 
+			big{
+				margin-right: 10px;
+			}	
+			.task-bubble{
+				display: inline-block;
+				margin-right: 10px;
+				background-color: #2F2F2F;
+				height: 40px;
+			    // max-width: 200px;
+			    padding: 10px;
+			    min-width: 10px;
+			    color: white;
+			    font-weight: bold;
+			}
 	}
-
+		}
 }
-
 #addTaskPopUp{
 	.modal-content{
 		border-radius: 0px;
@@ -105,10 +124,10 @@ nav{
 
 	#tasks-window{
 		background-color:#FEF9EE;
-		padding: 30px;
+		padding: 0px 30px 30px 30px;
 		#title-bar{
 			width: 100%;
-			display: inline-block;	
+			display: inline-bmlock;	
 			#container-title{
 				width: 80%;
 				float: left;
@@ -128,6 +147,7 @@ nav{
 					color: white;
 					font-weight: bold;
 					text-align: center;
+					margin-bottom: 10px;
 				}
 				.switchFormat{
 					background-color: #F0AD4E !important;
@@ -184,6 +204,34 @@ nav{
 			text-shadow: 0 0 2px #3c763d;
 			box-shadow: 0 0 2px #3c763d;
 		}
+		#no-tasks{
+
+			text-align: center;
+			min-width: 100%;
+		    text-align: center;
+		    margin-top: 60px;
+			.ib{
+				display: inline-block;
+			}
+			.FL{
+				float: left;
+			}
+			#thumb{
+				width: 30%;
+   				text-align: right;
+				img{
+					width: 50%;
+				}
+			}
+			#congrat-text{
+				width: 70%;
+			    padding-top: 30px;
+		        padding-left: 15px;
+			    color: #5589D9;
+			    text-align: left;
+			}
+			
+		}
 		.task-box{
 			padding: 5px;
 			width:320px;
@@ -201,6 +249,16 @@ nav{
 				h5{
 					margin: 0px;
 					font-weight: bold;
+					width: 95%;
+				}
+				.removeTask{
+					position: absolute;
+				    // width: 5%;
+				    text-align: center;
+				    margin-top: -6px;
+				    font-size: 18px;
+				    font-weight: bold;
+				    cursor: pointer;
 				}
 
 			}
@@ -253,6 +311,47 @@ nav{
 		}
 	}
 }
+
+.toRemove {
+  animation: collapse .3s linear;
+  -webkit-animation: collapse .3s linear;
+  // animation-fill-mode: forwards;
+}
+
+@keyframes collapse {
+  0% {
+	position: relative;
+	left: 0;
+  }
+  // 60% {
+  // 	position: relative;
+  //   left: -100px;
+  // }
+  100%{
+  	position: relative;
+  	left: -1000px;
+
+  	display: none;
+  }
+}
+
+@-webkit-keyframes collapse {
+  0% {
+	position: relative;
+	left: 0;
+  }
+  // 60% {
+  // 	position: relative;
+  //   left: -100px;
+  // }
+  100%{
+  	position: relative;
+  	left: -1000px;
+
+  	display: none;
+  }
+}
+
 #task-list-container{
 	.sample:after{
 		top: -80px !important;
@@ -262,15 +361,28 @@ nav{
 	padding: 5px;
 	background-color: #F5EFE1;
 	margin-bottom: 5px;
-	width: 80%;
+	width: 100%;
 	
 	.list-title{
+
 		h5{
 			color: white;
 			font-weight: bold;
 			margin: 0px;
+			width: 98%;
+			float: left;
 		}
-		min-height: 20px;
+		.removeTask{
+			position: absolute;
+		    // width: 5%;
+		    text-align: center;
+		    margin-top: -6px;
+		    font-size: 18px;
+		    font-weight: bold;
+		    cursor: pointer;
+		    color: white;
+		}
+		min-height: 25px;
 		padding: 5px;
 	}
 	.list-due-date{
@@ -310,3 +422,85 @@ nav{
 		padding: 10px;
 	}
 }
+
+
+@media screen and (max-width:680px) {
+	#tasks-window #tasks-container .task-box{
+		width: 260px;
+	}
+ 	#task-add-btn{
+ 		display: block;
+ 		width: 100% !important;
+ 		#addTaskBtn{
+ 			float: left;
+		    margin-right: 15px;
+ 		}
+ 	}
+ 	#tasks-window #tasks-container #no-tasks{
+		// color: red !important;
+ 		#thumb{
+ 			width: 100%;
+ 			padding-top: 20px;
+ 			text-align: center;
+ 			
+ 		}
+ 		#congrat-text{
+ 			width: 100%;
+ 			text-align: center;
+ 			h1{
+ 				margin: 0;
+ 				font-size: 25px !important;
+ 				font-weight: 800;
+ 			}
+ 			// color: white;
+ 		}
+ 	}
+}
+
+@media screen and (min-width: 680px) and (max-width:1200px) {
+	#tasks-window #tasks-container #no-tasks{
+		height: 00px;
+		#congrat-text{
+			margin-top: -30px;
+			h1{
+				font-size: 30px;
+				font-weight: 800;
+			}
+		}
+
+
+		// color: red !important;
+ 	// 	#thumb{
+ 	// 		// width: 30%;
+ 	// 	}
+ 	// 	#congrat-text{
+ 	// 		color: white;
+ 	// 	}
+ 	}
+	#tasks-window #tasks-container .task-box{
+		width: 290px;
+	}
+ 	#task-add-btn{
+ 		display: block;
+ 		width: 100% !important;
+ 		#addTaskBtn{
+ 			float: left;
+		    margin-right: 15px;
+ 		}
+ 	}
+	
+}
+
+// @media screen and (min-width:100px) and (max-width: 1500px) {
+//  	body{
+//  		color: red;
+//  	}
+//  	#task-add-btn{
+//  		display: block;
+//  		width: 100% !important;
+//  		#addTaskBtn{
+//  			float: left;
+// 		    margin-right: 15px;
+//  		}
+//  	}
+// }

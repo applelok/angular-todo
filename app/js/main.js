@@ -1,21 +1,22 @@
 var app = angular.module('todoApp', []).service('todoJson', function ($http, $q) {
- 
+
   var promise = $http.get('js/testdata.json').then(
   function success(response) {
-     var data = response.data.root;
-      var deferred = $q.defer();
-      var todoTemp2 = [];
-      for (var i = 0; i < data.length; i++) {
-        var datum = data[i];
-        todoTemp2.push({ id: datum.id, text: datum.text, duedate: datum.duedate, desc: datum.desc, color: datum.color, done: datum.done });
-      }
-      return todoTemp2;
+    var data = response.data.root;
+    var deferred = $q.defer();
+    var todoTemp2 = [];
+    for (var i = 0; i < data.length; i++) {
+      var datum = data[i];
+      todoTemp2.push({ id: datum.id, text: datum.text, duedate: datum.duedate, desc: datum.desc, color: datum.color, done: datum.done });
+    }
+
+    return todoTemp2;
   },
+
   function error(response) {
     var data = response.data;
     return data;
   });
-   
 
   return promise;
 }); // other stuff comes after this;
@@ -26,32 +27,41 @@ var todoTemp = [];
 var isShowAsList = false;
 
 app.controller('taskBarController', function ($scope, $http, todoJson) {
-  var todoList = [];
   todoJson.then(function (data) {
-    todoList = data;
+    var todoList = data;
     $scope.todos = todoList;
+    $scope.totalTasks = function () {
+      return $scope.todos.length;
+    };
+
+    $scope.totalCompleted = function () {
+      return _.filter($scope.todos, function (item) {
+        return item.done;
+      }).length;
+    };
+
+    $scope.remaining = function () {
+      return _.filter($scope.todos, function (item) {
+        return !item.done;
+      }).length;
+    };
   });
 
-  // $scope.todos = todoList;
-
-  $scope.totalTasks = function () {
-     return $scope.todos.length;
-  };
-
-  $scope.totalCompleted = function () {
-    return _.filter($scope.todos, function (item) {
-      return item.done;
-    }).length;
-  };
-
-  $scope.remaining = function () {
-    return _.filter($scope.todos, function (item) {
-      return !item.done;
-    }).length;
+  $scope.toggleStat = function () {
+    $('#taskbar').slideToggle('fast', function () {
+    //Animation complete.
+      if ($('#taskbar').is(':visible')) {
+        $('#toggleSwitch').text('Hide');
+        $('#toggleArrow').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+      }else {
+        $('#toggleSwitch').text('Show');
+        $('#toggleArrow').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+      }
+    });
   };
 });
 
-app.controller('taskWinController', function ($scope, todoJson) {
+app.controller('taskWinController', function ($scope, todoJson, $timeout) {
   var todoList = [];
   var id = todoList.length;
   todoJson.then(function (todoTemp) {
@@ -122,6 +132,27 @@ app.controller('taskWinController', function ($scope, todoJson) {
     }
   };
 
+  $scope.removeAlert = function (idx, isList){
+    var target;
+    if(isList){
+      target = $('.task-list')[idx]; 
+    }else{
+      target = $('.task-box')[idx];
+    }
+
+    $(target).addClass('toRemove');
+    $timeout(function () {
+      $scope.todos.splice(idx, 1);
+      if($scope.todos.length == 0){
+        noTasks();
+      }
+    }, 300);
+  }
+
+  function noTasks(){
+    
+  }
+  
 });
 
 // app.controller("TodoCtrl", function ($scope) {

@@ -20,20 +20,35 @@ nav {
 .FL {
   float: left; }
 
-#taskbar {
+#taskStatBar #toggleStat {
+  background-color: #FEF9EE;
+  height: 30px;
+  min-width: 70px;
+  text-align: center;
+  padding: 5px 10px 5px 10px; }
+  #taskStatBar #toggleStat div {
+    width: 130px;
+    background-color: #F5EFE1;
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    margin-top: -5px;
+    cursor: pointer; }
+
+#taskStatBar #taskbar {
   height: 120px;
   background-color: #F5EFE1;
-  padding: 30px; }
-  #taskbar h4 {
+  padding: 30px;
+  position: relative; }
+  #taskStatBar #taskbar h4 {
     margin-top: 0px;
     font-weight: bold;
     text-decoration: underline;
     text-transform: uppercase; }
-  #taskbar #task-bubble-bar {
+  #taskStatBar #taskbar #task-bubble-bar {
     float: left; }
-    #taskbar #task-bubble-bar big {
+    #taskStatBar #taskbar #task-bubble-bar big {
       margin-right: 10px; }
-    #taskbar #task-bubble-bar .task-bubble {
+    #taskStatBar #taskbar #task-bubble-bar .task-bubble {
       display: inline-block;
       margin-right: 10px;
       background-color: #2F2F2F;
@@ -82,10 +97,10 @@ nav {
 
 #tasks-window {
   background-color: #FEF9EE;
-  padding: 30px; }
+  padding: 0px 30px 30px 30px; }
   #tasks-window #title-bar {
     width: 100%;
-    display: inline-block; }
+    display: inline-bmlock; }
     #tasks-window #title-bar #container-title {
       width: 80%;
       float: left; }
@@ -101,7 +116,8 @@ nav {
         min-width: 100px;
         color: white;
         font-weight: bold;
-        text-align: center; }
+        text-align: center;
+        margin-bottom: 10px; }
       #tasks-window #title-bar #task-add-btn .switchFormat {
         background-color: #F0AD4E !important; }
   #tasks-window #addTaskForm .colorpicker {
@@ -145,6 +161,26 @@ nav {
       -webkit-text-shadow: 0 0 2px #c00;
       text-shadow: 0 0 2px #3c763d;
       box-shadow: 0 0 2px #3c763d; }
+    #tasks-window #tasks-container #no-tasks {
+      text-align: center;
+      min-width: 100%;
+      text-align: center;
+      margin-top: 60px; }
+      #tasks-window #tasks-container #no-tasks .ib {
+        display: inline-block; }
+      #tasks-window #tasks-container #no-tasks .FL {
+        float: left; }
+      #tasks-window #tasks-container #no-tasks #thumb {
+        width: 30%;
+        text-align: right; }
+        #tasks-window #tasks-container #no-tasks #thumb img {
+          width: 50%; }
+      #tasks-window #tasks-container #no-tasks #congrat-text {
+        width: 70%;
+        padding-top: 30px;
+        padding-left: 15px;
+        color: #5589D9;
+        text-align: left; }
     #tasks-window #tasks-container .task-box {
       padding: 5px;
       width: 320px;
@@ -160,7 +196,15 @@ nav {
         color: white; }
         #tasks-window #tasks-container .task-box .task-title h5 {
           margin: 0px;
-          font-weight: bold; }
+          font-weight: bold;
+          width: 95%; }
+        #tasks-window #tasks-container .task-box .task-title .removeTask {
+          position: absolute;
+          text-align: center;
+          margin-top: -6px;
+          font-size: 18px;
+          font-weight: bold;
+          cursor: pointer; }
       #tasks-window #tasks-container .task-box .task2 {
         background-color: #5CB85C; }
       #tasks-window #tasks-container .task-box .task3 {
@@ -196,6 +240,28 @@ nav {
           height: 20px;
           width: 20px; }
 
+.toRemove {
+  animation: collapse .3s linear;
+  -webkit-animation: collapse .3s linear; }
+
+@keyframes collapse {
+  0% {
+    position: relative;
+    left: 0; }
+  100% {
+    position: relative;
+    left: -1000px;
+    display: none; } }
+
+@-webkit-keyframes collapse {
+  0% {
+    position: relative;
+    left: 0; }
+  100% {
+    position: relative;
+    left: -1000px;
+    display: none; } }
+
 #task-list-container .sample:after {
   top: -80px !important; }
 
@@ -204,14 +270,24 @@ nav {
   padding: 5px;
   background-color: #F5EFE1;
   margin-bottom: 5px;
-  width: 80%; }
+  width: 100%; }
   #task-list-container .task-list .list-title {
-    min-height: 20px;
+    min-height: 25px;
     padding: 5px; }
     #task-list-container .task-list .list-title h5 {
       color: white;
       font-weight: bold;
-      margin: 0px; }
+      margin: 0px;
+      width: 98%;
+      float: left; }
+    #task-list-container .task-list .list-title .removeTask {
+      position: absolute;
+      text-align: center;
+      margin-top: -6px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white; }
   #task-list-container .task-list .list-due-date {
     min-height: 20px;
     background-color: white;
@@ -237,3 +313,41 @@ nav {
     width: 50%;
     margin: 0 auto;
     padding: 10px; }
+
+@media screen and (max-width: 680px) {
+  #tasks-window #tasks-container .task-box {
+    width: 260px; }
+  #task-add-btn {
+    display: block;
+    width: 100% !important; }
+    #task-add-btn #addTaskBtn {
+      float: left;
+      margin-right: 15px; }
+  #tasks-window #tasks-container #no-tasks #thumb {
+    width: 100%;
+    padding-top: 20px;
+    text-align: center; }
+  #tasks-window #tasks-container #no-tasks #congrat-text {
+    width: 100%;
+    text-align: center; }
+    #tasks-window #tasks-container #no-tasks #congrat-text h1 {
+      margin: 0;
+      font-size: 25px !important;
+      font-weight: 800; } }
+
+@media screen and (min-width: 680px) and (max-width: 1200px) {
+  #tasks-window #tasks-container #no-tasks {
+    height: 00px; }
+    #tasks-window #tasks-container #no-tasks #congrat-text {
+      margin-top: -30px; }
+      #tasks-window #tasks-container #no-tasks #congrat-text h1 {
+        font-size: 30px;
+        font-weight: 800; }
+  #tasks-window #tasks-container .task-box {
+    width: 290px; }
+  #task-add-btn {
+    display: block;
+    width: 100% !important; }
+    #task-add-btn #addTaskBtn {
+      float: left;
+      margin-right: 15px; } }
