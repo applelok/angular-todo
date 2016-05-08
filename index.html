@@ -1,6 +1,8 @@
 <!doctype html>
 <html ng-app="todoApp">
 <head>
+ <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+
 	<title>My Angular App</title>
 
 	<!--build:css css/styles.min.css-->
@@ -16,9 +18,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 
 	<script src="http://underscorejs.org/underscore-min.js"></script>
-	<!--build:js js/main.min.js -->
 	<script src="js/lib/jquery-1.12.2.min.js"></script>
 	<script src="http://requirejs.org/docs/release/2.2.0/minified/require.js"></script>
+	<!--build:js js/main.min.js -->
 	<script src="js/main.js"></script>
 	<!-- endbuild -->
 	<!-- Latest compiled and minified JavaScript -->
@@ -33,30 +35,41 @@
 			<span class="small-highlight">with AngularJS</span>
 		</div>
 	</nav>
-	<div id="taskbar" ng-controller="taskBarController">
-		<h4>Your tasks statistics</h4>
-		<div id="task-bubble-bar">
-			<big>Total tasks: {{totalTasks()}}</big>
-			<big>Completed: {{totalCompleted()}}</big>
-			<big>Remaining: {{remaining()}}</big>
-			<!-- <div class="task-bubble" ng-repeat="task in tasks" style="background-color: {{task.color}}">
-				<span>{{task.text}}</span>
-			</div> -->
-			<!-- <div class="task-bubble task2">
-				<span>DONE 2.47 BUILD TASKS</span>
+
+	<div id="taskStatBar" ng-controller="taskBarController">
+		<div id="taskbar">
+			<h4>Your tasks statistics</h4>
+			<div id="task-bubble-bar">
+				<big>Total tasks: {{totalTasks()}}</big>
+				<big>Completed: {{totalCompleted()}}</big>
+				<big>Remaining: {{remaining()}}</big>
+				<!-- <div class="task-bubble" ng-repeat="task in tasks" style="background-color: {{task.color}}">
+					<span>{{task.text}}</span>
+				</div> -->
+				<!-- <div class="task-bubble task2">
+					<span>DONE 2.47 BUILD TASKS</span>
+				</div>
+				<div class="task-bubble task3">
+					<span>MAKE A PROFOLIO</span>
+				</div> -->
 			</div>
-			<div class="task-bubble task3">
-				<span>MAKE A PROFOLIO</span>
-			</div> -->
+		</div>
+		<div id="toggleStat" ng-click="toggleStat()">
+			<div>
+				<span id="toggleArrow" class="glyphicon glyphicon-chevron-up"></span>
+				<span id="toggleSwitch">Hide</span><span> Statistic</span>
+			</div>
 		</div>
 	</div>
+	
 	<div id="tasks-window" ng-controller="taskWinController">
 		<div id="title-bar">
 			<div id="container-title">
 				<h4>YOUR TASKS LIST ^_^</h4>
 			</div>
+
 			<div id="task-add-btn">
-				 <button id="addTaskBtn"class="btn switchFormat" ng-click="switchGridList($event)">
+				<button id="addTaskBtn"class="btn switchFormat" ng-click="switchGridList($event)">
 					<span id="showFormat">Show as List</span>
 				</button>
 				<button id="addTaskBtn" class="btn" data-toggle="modal" data-target="#addTaskPopUp">
@@ -111,49 +124,51 @@
 				</div>
 			</div>
 		</div>
-		<div id="tasks-container">
+		<div id="tasks-container" style=" float: left;">
 			<div id="task-box-container">
-			<div class="task-box" ng-class="{ sample : task.done == true}" ng-repeat="task in todos">
-				<div class="task-title" style="background-color:{{task.color}}">
-					<h5>{{task.text}}</h5>
-				</div>
-				<div class="task-due-date">
-					<p>{{task.desc}}</p>
-					<span class="glyphicon glyphicon-tag"></span>
-					<span>{{task.duedate}}</span>
-				</div>
-				
-				<div class="task-done" style="text-align: right;">
-					<div class="ib task-done-text">
-						<span>Done</span>
+				<div class="task-box" data-colorlabel="{{task.color}}" data-done="{{task.done}}" ng-class="{ sample : task.done == true}" ng-repeat="task in todos">
+					<div class="task-title" style="background-color:{{task.color}}">
+						<h5 class="FL">{{task.text}}</h5>
+						<span class="removeTask" ng-click="removeAlert($index)">x</span>
 					</div>
-					<div class="ib">
-						<input type="checkbox" id="cbtest" ng-checked="task.done==true" ng-click="taskCompleted($event,$index, true)"/>
+					<div class="task-due-date">
+						<p>{{task.desc}}</p>
+						<span class="glyphicon glyphicon-tag"></span>
+						<span>{{task.duedate}}</span>
+					</div>
+
+					<div class="task-done" style="text-align: right;">
+						<div class="ib task-done-text">
+							<span>Done</span>
+						</div>
+						<div class="ib">
+							<input type="checkbox" id="cbtest" ng-checked="task.done==true" ng-click="taskCompleted($event,$index, true)"/>
+						</div>
 					</div>
 				</div>
-			</div>
 			</div>
 			<div class="clearfix"></div>
 			<div id="task-list-container" style="display: none;">
-			<div class="task-list" ng-class="{ sample : task.done == true}" ng-repeat="task in todos">
-				<div class="list-title" style="background-color:{{task.color}}">
-					<h5>{{task.text}}</h5>
-				</div>
-				<div class="list-due-date">
-					<p>{{task.desc}}</p>
-					<span class="glyphicon glyphicon-tag"></span>
-					<span>{{task.duedate}}</span>
-				</div>
-				
-				<div class="list-done" style="text-align: right;">
-					<div class="ib task-done-text">
-						<span>Done</span>
+				<div class="task-list" ng-class="{ sample : task.done == true}" ng-repeat="task in todos">
+					<div class="list-title" style="background-color:{{task.color}}">
+						<h5>{{task.text}}</h5>
+
 					</div>
-					<div class="ib">
-						<input type="checkbox" ng-checked="task.done==true" id="cbtest" ng-click="taskCompleted($event,$index, false)"/>
+					<div class="list-due-date">
+						<p>{{task.desc}}</p>
+						<span class="glyphicon glyphicon-tag"></span>
+						<span>{{task.duedate}}</span>
+					</div>
+
+					<div class="list-done" style="text-align: right;">
+						<div class="ib task-done-text">
+							<span>Done</span>
+						</div>
+						<div class="ib">
+							<input type="checkbox" ng-checked="task.done==true" id="cbtest" ng-click="taskCompleted($event,$index, false)"/>
+						</div>
 					</div>
 				</div>
-			</div>
 			</div>
 		<!-- <div id="todoApp" style="display:none;">
 			<div id="outer">
@@ -182,6 +197,9 @@
 		</div> -->
 
 	</div>
+	<!-- <div style="width: 20%; float: left;">
+	<input type="checkbox"/>Done
+	</div> -->
 
 </body>
 </html>

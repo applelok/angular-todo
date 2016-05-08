@@ -28,36 +28,54 @@ nav{
 .FL{
 	float: left;
 }
-#taskbar{
-	height: 120px;
-	background-color: #F5EFE1;
-	padding: 30px;
-	h4{
-		margin-top: 0px;
-		font-weight: bold;
-		text-decoration: underline;
-		text-transform: uppercase;
+#taskStatBar{
+
+	#toggleStat{
+	    // position: absolute;
+	    background-color: #FEF9EE;
+	    height: 30px;
+	    min-width: 70px;
+	    text-align: center;
+	    padding: 5px 10px 5px 10px;
+	    div{
+	    	width: 130px;
+		    background-color: #F5EFE1;
+		    margin: 0 auto;
+		    padding: 5px 10px 5px 10px;
+		    margin-top: -5px;
+		    cursor: pointer;
+	    }
 	}
-	#task-bubble-bar{
-		float: left; 
-		big{
-			margin-right: 10px;
-		}	
-		.task-bubble{
-			display: inline-block;
-			margin-right: 10px;
-			background-color: #2F2F2F;
-			height: 40px;
-		    // max-width: 200px;
-		    padding: 10px;
-		    min-width: 10px;
-		    color: white;
-		    font-weight: bold;
+	#taskbar{
+		height: 120px;
+		background-color: #F5EFE1;
+		padding: 30px;
+		h4{
+			margin-top: 0px;
+			font-weight: bold;
+			text-decoration: underline;
+			text-transform: uppercase;
 		}
+
+		#task-bubble-bar{
+			float: left; 
+			big{
+				margin-right: 10px;
+			}	
+			.task-bubble{
+				display: inline-block;
+				margin-right: 10px;
+				background-color: #2F2F2F;
+				height: 40px;
+			    // max-width: 200px;
+			    padding: 10px;
+			    min-width: 10px;
+			    color: white;
+			    font-weight: bold;
+			}
 	}
-
+		}
 }
-
 #addTaskPopUp{
 	.modal-content{
 		border-radius: 0px;
@@ -105,10 +123,10 @@ nav{
 
 	#tasks-window{
 		background-color:#FEF9EE;
-		padding: 30px;
+		padding: 0px 30px 30px 30px;
 		#title-bar{
 			width: 100%;
-			display: inline-block;	
+			display: inline-bmlock;	
 			#container-title{
 				width: 80%;
 				float: left;
@@ -128,6 +146,7 @@ nav{
 					color: white;
 					font-weight: bold;
 					text-align: center;
+					margin-bottom: 10px;
 				}
 				.switchFormat{
 					background-color: #F0AD4E !important;
@@ -201,6 +220,16 @@ nav{
 				h5{
 					margin: 0px;
 					font-weight: bold;
+					width: 95%;
+				}
+				.removeTask{
+					position: absolute;
+				    // width: 5%;
+				    text-align: center;
+				    margin-top: -6px;
+				    font-size: 18px;
+				    font-weight: bold;
+				    cursor: pointer;
 				}
 
 			}
@@ -262,7 +291,7 @@ nav{
 	padding: 5px;
 	background-color: #F5EFE1;
 	margin-bottom: 5px;
-	width: 80%;
+	width: 95%;
 	
 	.list-title{
 		h5{
@@ -309,4 +338,15 @@ nav{
 		margin: 0 auto;
 		padding: 10px;
 	}
+}
+
+@media screen and (max-width:680px) {
+ 	#task-add-btn{
+ 		display: block;
+ 		width: 100% !important;
+ 		#addTaskBtn{
+ 			float: left;
+		    margin-right: 15px;
+ 		}
+ 	}
 }

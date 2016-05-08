@@ -20,20 +20,34 @@ nav {
 .FL {
   float: left; }
 
-#taskbar {
+#taskStatBar #toggleStat {
+  background-color: #FEF9EE;
+  height: 30px;
+  min-width: 70px;
+  text-align: center;
+  padding: 5px 10px 5px 10px; }
+  #taskStatBar #toggleStat div {
+    width: 130px;
+    background-color: #F5EFE1;
+    margin: 0 auto;
+    padding: 5px 10px 5px 10px;
+    margin-top: -5px;
+    cursor: pointer; }
+
+#taskStatBar #taskbar {
   height: 120px;
   background-color: #F5EFE1;
   padding: 30px; }
-  #taskbar h4 {
+  #taskStatBar #taskbar h4 {
     margin-top: 0px;
     font-weight: bold;
     text-decoration: underline;
     text-transform: uppercase; }
-  #taskbar #task-bubble-bar {
+  #taskStatBar #taskbar #task-bubble-bar {
     float: left; }
-    #taskbar #task-bubble-bar big {
+    #taskStatBar #taskbar #task-bubble-bar big {
       margin-right: 10px; }
-    #taskbar #task-bubble-bar .task-bubble {
+    #taskStatBar #taskbar #task-bubble-bar .task-bubble {
       display: inline-block;
       margin-right: 10px;
       background-color: #2F2F2F;
@@ -82,10 +96,10 @@ nav {
 
 #tasks-window {
   background-color: #FEF9EE;
-  padding: 30px; }
+  padding: 0px 30px 30px 30px; }
   #tasks-window #title-bar {
     width: 100%;
-    display: inline-block; }
+    display: inline-bmlock; }
     #tasks-window #title-bar #container-title {
       width: 80%;
       float: left; }
@@ -101,7 +115,8 @@ nav {
         min-width: 100px;
         color: white;
         font-weight: bold;
-        text-align: center; }
+        text-align: center;
+        margin-bottom: 10px; }
       #tasks-window #title-bar #task-add-btn .switchFormat {
         background-color: #F0AD4E !important; }
   #tasks-window #addTaskForm .colorpicker {
@@ -160,7 +175,15 @@ nav {
         color: white; }
         #tasks-window #tasks-container .task-box .task-title h5 {
           margin: 0px;
-          font-weight: bold; }
+          font-weight: bold;
+          width: 95%; }
+        #tasks-window #tasks-container .task-box .task-title .removeTask {
+          position: absolute;
+          text-align: center;
+          margin-top: -6px;
+          font-size: 18px;
+          font-weight: bold;
+          cursor: pointer; }
       #tasks-window #tasks-container .task-box .task2 {
         background-color: #5CB85C; }
       #tasks-window #tasks-container .task-box .task3 {
@@ -204,7 +227,7 @@ nav {
   padding: 5px;
   background-color: #F5EFE1;
   margin-bottom: 5px;
-  width: 80%; }
+  width: 95%; }
   #task-list-container .task-list .list-title {
     min-height: 20px;
     padding: 5px; }
@@ -237,3 +260,11 @@ nav {
     width: 50%;
     margin: 0 auto;
     padding: 10px; }
+
+@media screen and (max-width: 680px) {
+  #task-add-btn {
+    display: block;
+    width: 100% !important; }
+    #task-add-btn #addTaskBtn {
+      float: left;
+      margin-right: 15px; } }
